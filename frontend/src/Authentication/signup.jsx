@@ -2,6 +2,8 @@ import React from "react";
 import { useAppStore } from "../store/appStore.js";
 import Navbar from "../navbar/navlink.jsx";
 import { useNavigate } from "react-router";
+import { MdOutlineMail } from "react-icons/md";
+import { RiLockPasswordLine } from "react-icons/ri";
 export default function Signup() {
   const navigate = useNavigate();
   const [user, setuser] = React.useState({ name: "", email: "", password: "" });
@@ -28,30 +30,39 @@ export default function Signup() {
     <>
     <Navbar/>
     <div className="signBOX">
-      <form onSubmit={handleSubmit}>
-        <input
+      <form className="signupbox" onSubmit={handleSubmit}>
+        
+        <input className="firstinput"
           name="name"
           type="text"
           placeholder="Name"
           value={user.name}
           onChange={(e) => setuser({ ...user, name: e.target.value })}
         />
+        
         <br></br>
+         <span className="sameline">
+                <MdOutlineMail className="icon"/>
+         
         <input
           name="email"
           type="email"
-          placeholder="📧 Enter your email"
+          placeholder="Enter your email"
           value={user.email}
           onChange={(e) => setuser({ ...user, email: e.target.value })}
         />
+        </span>
         <br></br>
+        <span className="sameline">
+                <RiLockPasswordLine className="icon"/>
         <input
           name="password"
           type="password"
-          placeholder="🔒 Enter your password"
+          placeholder="Enter your password"
           value={user.password}
           onChange={(e) => setuser({ ...user, password: e.target.value })}
         />
+        </span>
         <br></br>
         <button className="btn" type="submit">Sign Up</button>
       </form>

@@ -1,6 +1,23 @@
 import React from "react";
 import { useAppStore } from "../store/appStore";
+import { NavLink } from "react-router";
+import Navbar from "../navbar/navlink";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Text
+
+  ,Button
+} from '@chakra-ui/react'
+
 export default function Create(){
+    const { isOpen, onOpen, onClose } = useDisclosure()
     const[staff,setstaff]=React.useState({id:'',name:'',age:'',address:'',salary:'',contact:'',})
     const[finalMessage,setfinalMessage]=React.useState('')
      const[errors,seterrors]=React.useState('')
@@ -10,13 +27,19 @@ export default function Create(){
         const {success,data,message,error}=await createStaffs(staff);
         if(!success){
             seterrors(error)
+            onOpen();
 
         }
         setfinalMessage(message)
+        setstaff({id:'',name:'',age:'',address:'',salary:'',contact:'',})
+        onOpen();
     }
    
     return(
-        <form onSubmit={handleSubmit}>
+        <>
+        <Navbar/>
+        <form className="operaBox" onSubmit={handleSubmit}>
+             <h1 className="heading">Create staff info.</h1>
             <input name="id" type="Number" value={staff.id} onChange={(e)=>setstaff({...staff,id:e.target.value})} placeholder="id"/> 
             <br></br>
             <input name="name" type="text" value={staff.name} onChange={(e)=>setstaff({...staff,name:e.target.value})} placeholder="name"/> 
@@ -29,11 +52,31 @@ export default function Create(){
             <br></br>
             <input name="contact" type="Number" value={staff.contact} onChange={(e)=>setstaff({...staff,contact:e.target.value})} placeholder="contact"/> 
             <br></br>
-            <button type="submit">Create</button>
-            {finalMessage && <p>{finalMessage}</p>}
-              {errors && <p>{errors}</p>}
+            <button  className="btn1" type="submit">Create</button>
+            <br></br>
+            <NavLink className='backbtn' to='/home'>Get back</NavLink>
             
             
         </form>
+        {(finalMessage||errors) && <Modal  isOpen={isOpen} onClose={onClose}>
+                              <ModalOverlay />
+                              <ModalContent>
+                                <ModalHeader>Create staff info.</ModalHeader>
+                                <ModalCloseButton />
+                                <ModalBody>
+                                  <Text fontWeight='bold' mb='1rem'>
+                                    {finalMessage||errors}
+                                  </Text>
+                                </ModalBody>
+                      
+                                <ModalFooter>
+                                  <Button colorScheme='blue' mr={3} onClick={onClose}>
+                                    Close
+                                  </Button>
+                                  
+                                </ModalFooter>
+                              </ModalContent>
+                            </Modal>}
+        </>
     )
 }

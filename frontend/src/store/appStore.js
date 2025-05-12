@@ -86,6 +86,9 @@ export const useAppStore=create((set,get)=>({
               
             });
             const data=await res.json();
+             if(!data.success){
+               return {success:false,error:data.message}
+            }
              if(!res.ok){
                 return {success:false,error:data.message}
             }
@@ -111,6 +114,9 @@ export const useAppStore=create((set,get)=>({
                 body:JSON.stringify(newStaff)
             });
             const data=await res.json();
+             if(!data.success){
+               return {success:false,error:data.message}
+            }
              if(!res.ok){
                 return {success:false,error:data.message}
             }
@@ -136,9 +142,13 @@ export const useAppStore=create((set,get)=>({
                 body:JSON.stringify(updatedStaff)
             });
             const data=await res.json();
+             if(!data.success){
+               return {success:false,error:data.message}
+            }
              if(!res.ok){
                 return {success:false,error:data.message}
             }
+            set({staffs:get().staffs.map((staff)=>staff.id===id?data.data:staff)})
             return ({success:true,data:data.data,message:'Staff info updated successfully'})
 
         }
@@ -159,9 +169,13 @@ export const useAppStore=create((set,get)=>({
                 
             });
             const data=await res.json();
+             if(!data.success){
+               return {success:false,error:data.message}
+            }
              if(!res.ok){
                 return {success:false,error:data.message}
             }
+            set({staffs:get().staffs.filter((staff)=>staff.id!==id)})
             return ({success:true,data:data.data,message:'Staff info deleted successfully'})
 
         }
@@ -180,6 +194,9 @@ export const useAppStore=create((set,get)=>({
 
             });
             const data=await res.json();
+             if(!data.success){
+               return {success:false,error:data.message}
+            }
              if(!res.ok){
                 return {success:false,error:data.message}
             }

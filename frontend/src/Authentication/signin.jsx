@@ -2,6 +2,8 @@ import React from "react";
 import Navbar from "../navbar/navlink.jsx";
 import { useAppStore } from "../store/appStore.js";
 import { useNavigate,NavLink } from "react-router";
+import { MdOutlineMail } from "react-icons/md";
+import { RiLockPasswordLine } from "react-icons/ri";
 export default function Signin() {
   const navigate = useNavigate();
   const [user, setuser] = React.useState({ email: "", password: "" });
@@ -30,23 +32,29 @@ export default function Signin() {
       <form onSubmit={handleSubmit}>
         <span>Email</span>
         <br></br>
+        <div className="sameline">
+        <MdOutlineMail className="icon"/>
         <input
           name="email"
           type="email"
-          placeholder="📧 Enter your email"
+          placeholder="Enter your email"
           value={user.email}
           onChange={(e) => setuser({ ...user, email: e.target.value })}
         />
+        </div>
         <br></br>
          <span>Password</span>
         <br></br>
+        <div className="sameline">
+        <RiLockPasswordLine className="icon"/>
         <input
           name="password"
           type="password"
-          placeholder="🔒 Enter your password"
+          placeholder="Enter your password"
           value={user.password}
           onChange={(e) => setuser({ ...user, password: e.target.value })}
         />
+        </div>
         <br></br>
         <button className="btn" type="submit">Login</button>
       </form>

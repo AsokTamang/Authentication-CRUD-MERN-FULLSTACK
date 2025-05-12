@@ -23,6 +23,7 @@ export default function Get(){
     return(
         <>
         <Navbar/>
+        <h1 className="heading">Get staff info.</h1>
        <div className="operaBox">
        <table>
         <thead>

@@ -33,6 +33,7 @@ body{
   left: 18rem;
   top:10rem;
   height: 20rem;
+  padding: 20px;
 
 }
 input{
@@ -44,19 +45,67 @@ input{
   padding: 5px;
   margin: 5px;
 }
+.logout{
+  width: 25rem;
+  height: 2rem;
+   border: 1px solid rgb(190, 187, 187);
+    border-radius: 25px;
+     background:linear-gradient(135deg, #d74548, #c13e3e, #e70d0d);
+     color: white;
+    
+
+
+}
+.logout:hover{
+    border: 1px solid rgb(190, 187, 187);
+   box-shadow: 0 10px 10px rgba(5, 48, 94, 0.3);
+   height: 3rem;
+
+}
+.firstinput{
+  position: relative;
+  left: 1rem;
+}
 .btn{
    border: 1px solid rgb(190, 187, 187);
-   height: 2rem;
+   height: 3rem;
    width: 25rem;
    margin-top: 1rem;
    border-radius: 25px;
     background:linear-gradient(135deg, #0f2027, #203a43, #2c5364);
    color:white;
    text-align: center;
+   position: relative;
+   left:1rem;
 
 
 
 }
+input:hover{
+    border: 1px solid rgb(190, 187, 187);
+   box-shadow: 0 10px 10px rgba(5, 48, 94, 0.3);
+
+}
+.btn:hover{
+   border: 1px solid rgb(190, 187, 187);
+   box-shadow: 0 10px 10px rgba(5, 48, 94, 0.3);
+
+}
+.sameline{
+  display: flex;
+  flex-direction: row;
+ 
+  height: 2.5rem;
+
+}
+.icon{
+  position: relative;
+ top:1.5rem;
+
+}
+
+
+
 .error{
    width: 25rem;
    height: 2rem;
@@ -103,14 +152,36 @@ input{
 .nav:hover{
   background:linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   color: white;
+    border: 1px solid rgb(190, 187, 187);
+   box-shadow: 0 10px 10px rgba(5, 48, 94, 0.3);
+}
+.btn1{
+   border: 1px solid rgb(190, 187, 187);
+   height: 3rem;
+   width: 25rem;
+   margin-top: 1rem;
+   border-radius: 25px;
+    background:linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+   color:white;
+   text-align: center;
+   position: relative;
+   
+
+
+}
+.btn1:hover{
+   border: 1px solid rgb(190, 187, 187);
+   box-shadow: 0 10px 10px rgba(5, 48, 94, 0.3);
 }
 .operaBox{
   display: flex;
+
+  
   flex-direction: column;
   position: relative;
-  top:5rem;
+  top:3rem;
   align-items: center;
-  padding: 10px;
+
 }
 table{
   border: 1px solid rgb(190, 187, 187);
@@ -141,5 +212,14 @@ color: white;
 .backbtn:hover{
     background:linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: white;
+
+}
+.answer{
+  position: relative;
+  z-index: 1;
+  bottom: 9rem;
+  color: rgb(3, 96, 3);
+  font-weight: bolder;
+ 
 
 }
